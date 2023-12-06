@@ -1,12 +1,15 @@
-# main.pl
-
+# feature: Create csv file automatically and recod the parameter to csv file.
+# How to use? perl gen_csv.pl [p1] [p2]
+# 
+# Author: yuyuan <yuyuan@acom.networks.com>
+# Date: 2023/12/6
 use lib './gen_csv';
 use strict;
 use warnings;
 use CSVCreater;
 
-# Create CsvGenerator object
-my $csvCreater = CSVCreater->new('/home/csv_folder');
+# Create CsvCreater object
+my $csvCreater = CSVCreater->new('/home/u/test/csv_folder');
 
 # Gat parameter from command line.(e.g. perl gen_csv.pl [p1] [p2])
 if (@ARGV > 2) {

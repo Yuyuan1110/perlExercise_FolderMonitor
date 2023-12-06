@@ -1,10 +1,15 @@
+# feature: CSVcreate class.
+#
+# Author: yuyuan <yuyuan@acom.networks.com>
+# Date: 2023/12/6
+
 package CSVCreater;
 use strict;
 use warnings;
-
+use File::Path qw(make_path);
 sub new {
     my ( $class, $csvPath ) = @_;
-    my $self = { csvPath => $csvPath, };
+    my $self = { csvPath => $csvPath };
     bless $self, $class;
     return $self;
 }
@@ -12,7 +17,7 @@ sub new {
 sub checkPath {
     my ( $self, $path, $name ) = @_;
     if ( !-d $path ) {
-        mkdir $path or die "Could not create directory $path: $!";
+        make_path($path) or die "Could not create directory $path: $!";
         print "Directory $path created.\n";
         open( my $csvFile, '>', $path . '/' . $name )
           or die "Could not open file: $!";
