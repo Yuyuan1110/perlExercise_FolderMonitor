@@ -1,9 +1,11 @@
+#!/usr/bin/perl
+
 # feature: Monitor Specified floder and record the event logs, weitting value parameter to DB .
 #
 # Author: yuyuan <yuyuan@acom.networks.com>
 # Date: 2023/12/6
 
-use lib './watch_folder';
+use lib '/home/u/devlopment/perl/week4/watch_folder';
 use LogCreater;
 use ReadINI;
 use WriteDB;
@@ -27,7 +29,6 @@ my $dbConnection = $dbh->connection();
 while (1) {
     my @events        = $inotify->read;
     my $create        = 0;
-    my $modify        = 0;
     my $eventFullname = $logPath->{watch_folder};
     if (@events) {
         foreach my $event (@events) {
